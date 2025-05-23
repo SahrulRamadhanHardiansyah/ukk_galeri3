@@ -9,12 +9,12 @@ if (!isLoggedIn()) {
 
 $albums = mysqli_query($conn, "SELECT * FROM album WHERE UserID = {$_SESSION['user_id']}");
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['foto'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['foto'])) {
     $upload_dir = 'uploads/';
     $file_name = basename($_FILES['foto']['name']);
     $file_path = $upload_dir . $file_name;
     
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $file_path)){
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $file_path)) {
         include 'inc/koneksi.php';
         $judul = trim($_POST['judul'] ?? 'Tanpa Judul');
         $user_id = trim($_SESSION['user_id']);
@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['foto'])) {
         <div class="form-container">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label>Judul Foto: </label>
+                    <label>Judul Foto: </label> 
                     <input type="text" name="judul" required>
                 </div>
                 <div class="form-group">

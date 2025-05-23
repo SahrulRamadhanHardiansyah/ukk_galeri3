@@ -19,13 +19,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(mysqli_num_rows($cekUsername) > 0 ) {
             $error = 'Username sudah digunakan!';
         } else {
-            $simpan = mysqli_query($conn, "INSERT INTO user (username, password, email, namalengkap, alamat)
+            $simpan = mysqli_query($conn, "INSERT INTO user (Username, Password, Email, NamaLengkap, Alamat) 
             VALUES ('$username', '$password', '$email', '$nama_lengkap', '$alamat')");
 
             if ($simpan) {
                 $success = 'Registrasi berhasil! Silakan Login.';
                 $_POST = array();
-            }else {
+            } else {
                 $error = 'Gagal Registrasi! ' . mysqli_error($conn);
             }
         }
@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				</div>
 				
 				<div class="form-group">
-					<label class="required">Nama Lengkap</label>
+					<label >Nama Lengkap</label>
 					<input type="text" name="nama_lengkap" 
 						   value="<?= htmlspecialchars($_POST['nama_lengkap'] ?? '') ?>" required>
 				</div>

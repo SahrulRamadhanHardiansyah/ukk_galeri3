@@ -49,13 +49,13 @@ function getPhotosWithStats() {
     global $conn;
 
     $query = "SELECT f.*, 
-              COUNT(DISTINCT l.LikeID) AS jumlah_like, 
-              COUNT(DISTINCT k.KomentarID) AS jumlah_komentar
-              FROM foto f
-              LEFT JOIN likefoto l ON f.FotoID = l.FotoID
-              LEFT JOIN komentarfoto k ON f.FotoID = k.FotoID
-              GROUP BY f.FotoID
-              ORDER BY f.TanggalUnggah DESC";
+            COUNT(DISTINCT l.LikeID) AS jumlah_like, 
+            COUNT(DISTINCT k.KomentarID) AS jumlah_komentar
+            FROM foto f
+            LEFT JOIN likefoto l ON f.FotoID = l.FotoID
+            LEFT JOIN komentarfoto k ON f.FotoID = k.FotoID
+            GROUP BY f.FotoID
+            ORDER BY f.TanggalUnggah DESC";
 
     $result = mysqli_query($conn, $query);
     return mysqli_fetch_all($result, MYSQLI_ASSOC);
